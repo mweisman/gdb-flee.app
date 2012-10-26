@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'GDB Flee' target in the 'GDB Flee' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
