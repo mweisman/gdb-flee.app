@@ -8,7 +8,14 @@
 
 #import "OGRAgent.h"
 
+const char *ogrErrMsg;
+
 @implementation OGRAgent
+
+// OGR Error handler
+void ogrErrHandler(CPLErr eErrClass, int err_no, const char *msg) {
+    ogrErrMsg = msg;
+}
 
 - (BOOL)listener:(NSXPCListener *)listener shouldAcceptNewConnection:(NSXPCConnection *)newConnection {
     // This method will be called by the NSXPCListener. It gives the delegate an opportunity to configure and accept (or reject) a new incoming connection.
@@ -29,11 +36,12 @@
     response.response = @"test";
     //reply(response);
     OGRRegisterAll();
+    CPLSetErrorHandler(ogrErrHandler);
     
     // Open FileGDB
     OGRDataSourceH gdb_ds = OGROpen([fileLocation cStringUsingEncoding:NSUTF8StringEncoding], FALSE, NULL);
     if(gdb_ds == NULL) {
-        response.response = [NSString stringWithFormat:@"Could not open %@", fileLocation];
+        response.response = [NSString stringWithCString:ogrErrMsg encoding:NSUTF8StringEncoding];
         OGRCleanupAll();
         reply(response);
     }
@@ -48,6 +56,7 @@
     static char *ogrEncoding = "ENCODING=UTF-8";
     OGRResponse *response = [OGRResponse new];
     OGRRegisterAll();
+    CPLSetErrorHandler(ogrErrHandler);
     
     // Open FileGDB
     OGRDataSourceH gdb_ds = OGROpen([fileLocation cStringUsingEncoding:NSUTF8StringEncoding], FALSE, NULL);

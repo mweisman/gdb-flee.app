@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "Interfaces.h"
 #import <ogr_api.h>
+#import <cpl_error.h>
 
 @interface OGRAgent : NSObject <NSXPCListenerDelegate, OGR>
+
+void ogrErrHandler(CPLErr eErrClass, int err_no, const char *msg);
 
 @end
