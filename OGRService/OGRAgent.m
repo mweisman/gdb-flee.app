@@ -40,6 +40,7 @@
     OGRSFDriverH driverh = OGR_DS_GetDriver(gdb_ds);
     response.response = [NSString stringWithCString:OGR_Dr_GetName(driverh) encoding:NSUTF8StringEncoding];
     OGR_DS_Destroy(gdb_ds);
+    OGRCleanupAll();
     reply(response);
 }
 
