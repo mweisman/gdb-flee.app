@@ -55,7 +55,7 @@
                                                         defaultButton:@"OK"
                                                       alternateButton:nil
                                                           otherButton:nil
-                                            informativeTextWithFormat:@"%@ is not a valid File Geodatabase", file];
+                                            informativeTextWithFormat:@"%@", ogrr.response];
                 [badFileAlert runModal];
             }];
         }
