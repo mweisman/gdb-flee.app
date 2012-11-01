@@ -7,15 +7,60 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B3DA9481641C2860050EE50 /* ProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DA9471641C2860050EE50 /* ProgressPanel.m */; };
+		8B3DA94A1641E59F0050EE50 /* database_3.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8B3DA9491641E59F0050EE50 /* database_3.icns */; };
+		8B3DA94F1641E83D0050EE50 /* libfgdbunixrtl.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B3DA94B1641E8160050EE50 /* libfgdbunixrtl.dylib */; };
+		8B3DA9501641E83D0050EE50 /* libFileGDBAPI.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B3DA94C1641E8160050EE50 /* libFileGDBAPI.dylib */; };
+		8B3DA95D1641ED320050EE50 /* libgdal.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3DA95C1641ED320050EE50 /* libgdal.1.dylib */; };
+		8B3DA95E1641ED380050EE50 /* libgdal.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B3DA95C1641ED320050EE50 /* libgdal.1.dylib */; };
 		8B450FA9163A4E1000F825DC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B450FA8163A4E1000F825DC /* Cocoa.framework */; };
 		8B450FB3163A4E1000F825DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B450FB1163A4E1000F825DC /* InfoPlist.strings */; };
 		8B450FB5163A4E1000F825DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B450FB4163A4E1000F825DC /* main.m */; };
 		8B450FB9163A4E1000F825DC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8B450FB7163A4E1000F825DC /* Credits.rtf */; };
 		8B450FBC163A4E1000F825DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B450FBB163A4E1000F825DC /* AppDelegate.m */; };
 		8B450FBF163A4E1100F825DC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B450FBD163A4E1100F825DC /* MainMenu.xib */; };
+		8B450FCB163A4E2800F825DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B450FCA163A4E2800F825DC /* Foundation.framework */; };
+		8B450FD1163A4E2800F825DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B450FCF163A4E2800F825DC /* InfoPlist.strings */; };
+		8B450FD4163A4E2800F825DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B450FD3163A4E2800F825DC /* main.m */; };
+		8B450FDA163A4E7500F825DC /* OGRAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B450FD9163A4E7500F825DC /* OGRAgent.m */; };
+		8B450FDF163A4F2A00F825DC /* OGRResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B450FDE163A4F2A00F825DC /* OGRResponse.m */; };
+		8B450FE0163A4F2A00F825DC /* OGRResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B450FDE163A4F2A00F825DC /* OGRResponse.m */; };
+		8B450FE2163A50EF00F825DC /* com.mweisman.OGRService.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B450FC9163A4E2800F825DC /* com.mweisman.OGRService.xpc */; };
+		8B451019163B6B8700F825DC /* InputSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B451018163B6B8700F825DC /* InputSettingsViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8B450FE1163A50E500F825DC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/XPCServices;
+			dstSubfolderSpec = 1;
+			files = (
+				8B450FE2163A50EF00F825DC /* com.mweisman.OGRService.xpc in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B450FF6163A7C3700F825DC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8B3DA95E1641ED380050EE50 /* libgdal.1.dylib in CopyFiles */,
+				8B3DA94F1641E83D0050EE50 /* libfgdbunixrtl.dylib in CopyFiles */,
+				8B3DA9501641E83D0050EE50 /* libFileGDBAPI.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		8B3DA9461641C2860050EE50 /* ProgressPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressPanel.h; sourceTree = "<group>"; };
+		8B3DA9471641C2860050EE50 /* ProgressPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressPanel.m; sourceTree = "<group>"; };
+		8B3DA9491641E59F0050EE50 /* database_3.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = database_3.icns; path = ../database_3.icns; sourceTree = "<group>"; };
+		8B3DA94B1641E8160050EE50 /* libfgdbunixrtl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfgdbunixrtl.dylib; path = gdal/lib/libfgdbunixrtl.dylib; sourceTree = "<group>"; };
+		8B3DA94C1641E8160050EE50 /* libFileGDBAPI.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libFileGDBAPI.dylib; path = gdal/lib/libFileGDBAPI.dylib; sourceTree = "<group>"; };
+		8B3DA95C1641ED320050EE50 /* libgdal.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgdal.1.dylib; path = gdal/lib/libgdal.1.dylib; sourceTree = "<group>"; };
 		8B450FA4163A4E1000F825DC /* GDB Flee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GDB Flee.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B450FA8163A4E1000F825DC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		8B450FAB163A4E1000F825DC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -29,6 +74,20 @@
 		8B450FBA163A4E1000F825DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B450FBB163A4E1000F825DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8B450FBE163A4E1100F825DC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		8B450FC9163A4E2800F825DC /* com.mweisman.OGRService.xpc */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = com.mweisman.OGRService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B450FCA163A4E2800F825DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8B450FCE163A4E2800F825DC /* OGRService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OGRService-Info.plist"; sourceTree = "<group>"; };
+		8B450FD0163A4E2800F825DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8B450FD2163A4E2800F825DC /* OGRService-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OGRService-Prefix.pch"; sourceTree = "<group>"; };
+		8B450FD3163A4E2800F825DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8B450FD8163A4E7500F825DC /* OGRAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGRAgent.h; sourceTree = "<group>"; };
+		8B450FD9163A4E7500F825DC /* OGRAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGRAgent.m; sourceTree = "<group>"; };
+		8B450FDC163A4EE800F825DC /* Interfaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interfaces.h; sourceTree = "<group>"; };
+		8B450FDD163A4F2A00F825DC /* OGRResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGRResponse.h; sourceTree = "<group>"; };
+		8B450FDE163A4F2A00F825DC /* OGRResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGRResponse.m; sourceTree = "<group>"; };
+		8B450FED163A79C000F825DC /* GDB Flee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "GDB Flee.entitlements"; sourceTree = "<group>"; };
+		8B451017163B6B8700F825DC /* InputSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputSettingsViewController.h; sourceTree = "<group>"; };
+		8B451018163B6B8700F825DC /* InputSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputSettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,13 +99,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8B450FC6163A4E2800F825DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B450FCB163A4E2800F825DC /* Foundation.framework in Frameworks */,
+				8B3DA95D1641ED320050EE50 /* libgdal.1.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		8B450F99163A4E1000F825DC = {
 			isa = PBXGroup;
 			children = (
+				8B450FDB163A4EB400F825DC /* Shared */,
 				8B450FAE163A4E1000F825DC /* GDB Flee */,
+				8B450FCC163A4E2800F825DC /* OGRService */,
 				8B450FA7163A4E1000F825DC /* Frameworks */,
 				8B450FA5163A4E1000F825DC /* Products */,
 			);
@@ -56,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				8B450FA4163A4E1000F825DC /* GDB Flee.app */,
+				8B450FC9163A4E2800F825DC /* com.mweisman.OGRService.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -63,7 +134,11 @@
 		8B450FA7163A4E1000F825DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B3DA94B1641E8160050EE50 /* libfgdbunixrtl.dylib */,
+				8B3DA94C1641E8160050EE50 /* libFileGDBAPI.dylib */,
+				8B3DA95C1641ED320050EE50 /* libgdal.1.dylib */,
 				8B450FA8163A4E1000F825DC /* Cocoa.framework */,
+				8B450FCA163A4E2800F825DC /* Foundation.framework */,
 				8B450FAA163A4E1000F825DC /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -82,10 +157,15 @@
 		8B450FAE163A4E1000F825DC /* GDB Flee */ = {
 			isa = PBXGroup;
 			children = (
+				8B450FED163A79C000F825DC /* GDB Flee.entitlements */,
 				8B450FBA163A4E1000F825DC /* AppDelegate.h */,
 				8B450FBB163A4E1000F825DC /* AppDelegate.m */,
 				8B450FBD163A4E1100F825DC /* MainMenu.xib */,
 				8B450FAF163A4E1000F825DC /* Supporting Files */,
+				8B451017163B6B8700F825DC /* InputSettingsViewController.h */,
+				8B451018163B6B8700F825DC /* InputSettingsViewController.m */,
+				8B3DA9461641C2860050EE50 /* ProgressPanel.h */,
+				8B3DA9471641C2860050EE50 /* ProgressPanel.m */,
 			);
 			path = "GDB Flee";
 			sourceTree = "<group>";
@@ -93,6 +173,7 @@
 		8B450FAF163A4E1000F825DC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8B3DA9491641E59F0050EE50 /* database_3.icns */,
 				8B450FB0163A4E1000F825DC /* GDB Flee-Info.plist */,
 				8B450FB1163A4E1000F825DC /* InfoPlist.strings */,
 				8B450FB4163A4E1000F825DC /* main.m */,
@@ -100,6 +181,37 @@
 				8B450FB7163A4E1000F825DC /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8B450FCC163A4E2800F825DC /* OGRService */ = {
+			isa = PBXGroup;
+			children = (
+				8B450FD3163A4E2800F825DC /* main.m */,
+				8B450FCD163A4E2800F825DC /* Supporting Files */,
+				8B450FD8163A4E7500F825DC /* OGRAgent.h */,
+				8B450FD9163A4E7500F825DC /* OGRAgent.m */,
+			);
+			path = OGRService;
+			sourceTree = "<group>";
+		};
+		8B450FCD163A4E2800F825DC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8B450FCE163A4E2800F825DC /* OGRService-Info.plist */,
+				8B450FCF163A4E2800F825DC /* InfoPlist.strings */,
+				8B450FD2163A4E2800F825DC /* OGRService-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8B450FDB163A4EB400F825DC /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8B450FDC163A4EE800F825DC /* Interfaces.h */,
+				8B450FDD163A4F2A00F825DC /* OGRResponse.h */,
+				8B450FDE163A4F2A00F825DC /* OGRResponse.m */,
+			);
+			name = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +224,7 @@
 				8B450FA0163A4E1000F825DC /* Sources */,
 				8B450FA1163A4E1000F825DC /* Frameworks */,
 				8B450FA2163A4E1000F825DC /* Resources */,
+				8B450FE1163A50E500F825DC /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -121,6 +234,24 @@
 			productName = "GDB Flee";
 			productReference = 8B450FA4163A4E1000F825DC /* GDB Flee.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8B450FC8163A4E2800F825DC /* OGRService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B450FD5163A4E2800F825DC /* Build configuration list for PBXNativeTarget "OGRService" */;
+			buildPhases = (
+				8B450FC5163A4E2800F825DC /* Sources */,
+				8B450FC6163A4E2800F825DC /* Frameworks */,
+				8B450FC7163A4E2800F825DC /* Resources */,
+				8B450FF6163A7C3700F825DC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OGRService;
+			productName = OGRService;
+			productReference = 8B450FC9163A4E2800F825DC /* com.mweisman.OGRService.xpc */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -144,6 +275,7 @@
 			projectRoot = "";
 			targets = (
 				8B450FA3163A4E1000F825DC /* GDB Flee */,
+				8B450FC8163A4E2800F825DC /* OGRService */,
 			);
 		};
 /* End PBXProject section */
@@ -156,6 +288,15 @@
 				8B450FB3163A4E1000F825DC /* InfoPlist.strings in Resources */,
 				8B450FB9163A4E1000F825DC /* Credits.rtf in Resources */,
 				8B450FBF163A4E1100F825DC /* MainMenu.xib in Resources */,
+				8B3DA94A1641E59F0050EE50 /* database_3.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B450FC7163A4E2800F825DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B450FD1163A4E2800F825DC /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +309,19 @@
 			files = (
 				8B450FB5163A4E1000F825DC /* main.m in Sources */,
 				8B450FBC163A4E1000F825DC /* AppDelegate.m in Sources */,
+				8B450FDF163A4F2A00F825DC /* OGRResponse.m in Sources */,
+				8B451019163B6B8700F825DC /* InputSettingsViewController.m in Sources */,
+				8B3DA9481641C2860050EE50 /* ProgressPanel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B450FC5163A4E2800F825DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B450FD4163A4E2800F825DC /* main.m in Sources */,
+				8B450FDA163A4E7500F825DC /* OGRAgent.m in Sources */,
+				8B450FE0163A4F2A00F825DC /* OGRResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +352,14 @@
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
+		8B450FCF163A4E2800F825DC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B450FD0163A4E2800F825DC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -211,6 +373,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -227,7 +390,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -241,6 +406,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -250,18 +416,23 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
 		8B450FC3163A4E1100F825DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "GDB Flee/GDB Flee.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GDB Flee/GDB Flee-Prefix.pch";
 				INFOPLIST_FILE = "GDB Flee/GDB Flee-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -269,12 +440,53 @@
 		8B450FC4163A4E1100F825DC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "GDB Flee/GDB Flee.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GDB Flee/GDB Flee-Prefix.pch";
 				INFOPLIST_FILE = "GDB Flee/GDB Flee-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		8B450FD6163A4E2800F825DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OGRService/OGRService-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/gdal/include\"";
+				INFOPLIST_FILE = "OGRService/OGRService-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/gdal/lib\"",
+				);
+				MACH_O_TYPE = mh_execute;
+				PRODUCT_NAME = "com.mweisman.$(TARGET_NAME:rfc1034identifier)";
+				VALID_ARCHS = x86_64;
+				WRAPPER_EXTENSION = xpc;
+			};
+			name = Debug;
+		};
+		8B450FD7163A4E2800F825DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OGRService/OGRService-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/gdal/include\"";
+				INFOPLIST_FILE = "OGRService/OGRService-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/gdal/lib\"",
+				);
+				MACH_O_TYPE = mh_execute;
+				PRODUCT_NAME = "com.mweisman.$(TARGET_NAME:rfc1034identifier)";
+				VALID_ARCHS = x86_64;
+				WRAPPER_EXTENSION = xpc;
 			};
 			name = Release;
 		};
@@ -297,6 +509,16 @@
 				8B450FC4163A4E1100F825DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B450FD5163A4E2800F825DC /* Build configuration list for PBXNativeTarget "OGRService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B450FD6163A4E2800F825DC /* Debug */,
+				8B450FD7163A4E2800F825DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
