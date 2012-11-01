@@ -42,11 +42,13 @@ void ogrErrHandler(CPLErr eErrClass, int err_no, const char *msg) {
     OGRDataSourceH gdb_ds = OGROpen([fileLocation cStringUsingEncoding:NSUTF8StringEncoding], FALSE, NULL);
     if(gdb_ds == NULL) {
         response.response = [NSString stringWithCString:ogrErrMsg encoding:NSUTF8StringEncoding];
+        response.callWasSuccess = NO;
         OGRCleanupAll();
         reply(response);
     }
     OGRSFDriverH driverh = OGR_DS_GetDriver(gdb_ds);
     response.response = [NSString stringWithCString:OGR_Dr_GetName(driverh) encoding:NSUTF8StringEncoding];
+    response.callWasSuccess = YES;
     OGR_DS_Destroy(gdb_ds);
     OGRCleanupAll();
     reply(response);
@@ -62,6 +64,7 @@ void ogrErrHandler(CPLErr eErrClass, int err_no, const char *msg) {
     OGRDataSourceH gdb_ds = OGROpen([fileLocation cStringUsingEncoding:NSUTF8StringEncoding], FALSE, NULL);
     if(gdb_ds == NULL) {
         response.response = [NSString stringWithFormat:@"Could not open %@", fileLocation];
+        response.callWasSuccess = NO;
         OGRCleanupAll();
         reply(response);
     }
@@ -70,6 +73,7 @@ void ogrErrHandler(CPLErr eErrClass, int err_no, const char *msg) {
     OGRSFDriverH out_driver = OGRGetDriverByName([format cStringUsingEncoding:NSUTF8StringEncoding]);
     if(out_driver == NULL) {
         response.response = [NSString stringWithFormat:@"%@ driver not found", format];
+        response.callWasSuccess = NO;
         OGRCleanupAll();
         reply(response);
     }
@@ -77,6 +81,7 @@ void ogrErrHandler(CPLErr eErrClass, int err_no, const char *msg) {
     OGRDataSourceH out_ds = OGR_Dr_CreateDataSource(out_driver, [outLocation cStringUsingEncoding:NSUTF8StringEncoding], NULL);
     if(out_ds == NULL) {
         response.response = @"Could not create output dataset";
+        response.callWasSuccess = NO;
         OGRCleanupAll();
         reply(response);
     }
@@ -109,8 +114,8 @@ void ogrErrHandler(CPLErr eErrClass, int err_no, const char *msg) {
     OGR_DS_Destroy(out_ds);
     OGRCleanupAll();
     
-    response.response = @"all good";
-    
+    response.response = @"";
+    response.callWasSuccess = YES;
     reply(response);
 }
 

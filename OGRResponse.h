@@ -11,5 +11,6 @@
 @interface OGRResponse : NSObject <NSSecureCoding>
 
 @property (copy) NSString *response;
+@property BOOL callWasSuccess;
 
 @end

@@ -15,6 +15,7 @@
     if (self) {
         // NSSecureCoding requires that we specify the class of the object while decoding it, using the decodeObjectOfClass:forKey: method.
         _response = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"OGRResponse"];
+        _callWasSuccess = [aDecoder decodeBoolForKey:@"OGRResponseBool"];
     }
     return self;
 }
@@ -24,6 +25,7 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:_response forKey:@"OGRResponse"];
+    [aCoder encodeBool:_callWasSuccess forKey:@"OGRResponseBool"];
 }
 
 
