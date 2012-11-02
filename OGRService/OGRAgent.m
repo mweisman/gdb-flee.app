@@ -95,8 +95,11 @@ void ogrErrHandler(CPLErr eErrClass, int err_no, const char *msg) {
     
     // Copy FileGDB layers (aka tables/feature classes) into output layers
     int iLyr;
-    for (iLyr = 0; iLyr < OGR_DS_GetLayerCount(gdb_ds); iLyr++) {
+    int layerCount = OGR_DS_GetLayerCount(gdb_ds);
+    for (iLyr = 0; iLyr < layerCount; iLyr++) {
         OGRLayerH layer = OGR_DS_GetLayer(gdb_ds, iLyr);
+        NSString *layerName = [NSString stringWithCString:OGR_L_GetName(layer) encoding:NSUTF8StringEncoding];
+        [[_xpcConnection remoteObjectProxy] setLayerName:layerName];
         OGRFeatureDefnH fd = OGR_L_GetLayerDefn(layer);
         
         OGRLayerH out_layer = OGR_DS_CreateLayer(out_ds, OGR_L_GetName(layer),
@@ -109,8 +112,11 @@ void ogrErrHandler(CPLErr eErrClass, int err_no, const char *msg) {
         
         OGRFeatureH feat;
         OGR_L_ResetReading(layer);
-//        OGR_L_GetFeatureCount(<#OGRLayerH#>, <#int#>)
+        int featureCount = OGR_L_GetFeatureCount(layer, true);
+        int i = 0;
         while((feat = OGR_L_GetNextFeature(layer)) != NULL ) {
+            int percentDone = round(((double)i++/(double)featureCount)*100);
+            [[_xpcConnection remoteObjectProxy] setProgress:percentDone];
             OGRFeatureH feature = OGR_F_Clone(feat);
             OGR_L_CreateFeature(out_layer, feature);
             OGR_F_Destroy(feat);

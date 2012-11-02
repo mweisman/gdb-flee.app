@@ -110,6 +110,8 @@
     [[NSApplication sharedApplication] beginSheet:_progressPanel modalForWindow:_window modalDelegate:self didEndSelector:nil contextInfo:nil];
     [_progressPanel.progessBar startAnimation:nil];
     [_progressPanel.statusLabel setStringValue:[NSString stringWithFormat:@"Converting %@ to %@",_inputFile.stringValue, ogrFormat]];
+    [_progressPanel.progessBar setIndeterminate:NO];
+    [_progressPanel.progessBar setDoubleValue:0.0];
     [_ogrAgent convertFileAtLocation:gdbPath toFormat:ogrFormat toLocation:saveLoc reply:^(OGRResponse *ogrr){
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [NSApp endSheet:_progressPanel];
@@ -141,10 +143,10 @@
 
 #pragma mark OGRProgress
 - (void)setProgress:(double)progress {
-    return;
+    [_progressPanel.progessBar setDoubleValue:progress];
 }
 - (void)setLayerName:(NSString *)name {
-    return;
+    [_progressPanel.statusLabel setStringValue:[NSString stringWithFormat:@"Processing Layer %@", name]];
 }
 
 @end
