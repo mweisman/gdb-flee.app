@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "Interfaces.h"
 #import "InputSettingsViewController.h"
 
 @implementation AppDelegate {
@@ -19,6 +18,8 @@
     // Insert code here to initialize your application
     _connection = [[NSXPCConnection alloc] initWithServiceName:@"com.mweisman.OGRService"];
     _connection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(OGR)];
+    _connection.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(OGRProgress)];
+    _connection.exportedObject = self;
     [_connection resume];
     
     // Get a proxy object from the connection. This object implements the Agent protocol and calls the supplied error handling block if something goes wrong when a message with a reply is sent.
@@ -136,6 +137,14 @@
         [_popover close];
     }
 
+}
+
+#pragma mark OGRProgress
+- (void)setProgress:(double)progress {
+    return;
+}
+- (void)setLayerName:(NSString *)name {
+    return;
 }
 
 @end

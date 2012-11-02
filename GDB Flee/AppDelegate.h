@@ -8,8 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ProgressPanel.h"
+#import "Interfaces.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, OGRProgress>
 
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSTextField *inputFile;
@@ -18,7 +19,7 @@
 @property NSXPCConnection *connection;
 @property (weak) IBOutlet NSPopover *popover;
 @property (weak) IBOutlet NSButton *inputInfoButton;
-@property (unsafe_unretained) IBOutlet ProgressPanel *progressPanel;
+@property (weak) IBOutlet ProgressPanel *progressPanel;
 @property (weak) IBOutlet NSButton *optionsButton;
 
 

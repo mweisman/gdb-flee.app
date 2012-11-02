@@ -13,6 +13,7 @@
 
 @interface OGRAgent : NSObject <NSXPCListenerDelegate, OGR>
 
+@property (weak) NSXPCConnection *xpcConnection;
 void ogrErrHandler(CPLErr eErrClass, int err_no, const char *msg);
 
 @end

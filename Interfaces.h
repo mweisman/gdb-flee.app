@@ -20,3 +20,10 @@
             reply:(void (^)(OGRResponse *ogrr))reply;
 
 @end
+
+@protocol OGRProgress
+
+- (void)setProgress:(double)progress;
+- (void)setLayerName:(NSString *)name;
+
+@end

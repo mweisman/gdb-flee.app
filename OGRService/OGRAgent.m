@@ -26,8 +26,15 @@ void ogrErrHandler(CPLErr eErrClass, int err_no, const char *msg) {
     // This object instance is both the delegate and the singleton implementation of the Agent protocol. Another common pattern may be to create a new object to serve as the exportedObject for each new connection.
     newConnection.exportedObject = self;
     
+    // Setup remote obect to allow call back into main app
+    newConnection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(OGRProgress)];
+
+    
     // Allow messages to be received.
     [newConnection resume];
+    
+    // Allow access to the active connection by agent methods
+    _xpcConnection = newConnection;
     
     return YES;
 }
