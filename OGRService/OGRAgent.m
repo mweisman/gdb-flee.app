@@ -115,7 +115,7 @@ void ogrErrHandler(CPLErr eErrClass, int err_no, const char *msg) {
         int featureCount = OGR_L_GetFeatureCount(layer, true);
         int i = 0;
         while((feat = OGR_L_GetNextFeature(layer)) != NULL ) {
-            int percentDone = round(((double)i++/(double)featureCount)*100);
+            double percentDone = ((((double)i++ / (double)featureCount) * ((((double)iLyr + 1) / (double)layerCount) - ((double)iLyr / (double)layerCount))) + ((double)iLyr / (double)layerCount)) * 100;
             [[_xpcConnection remoteObjectProxy] setProgress:percentDone];
             OGRFeatureH feature = OGR_F_Clone(feat);
             OGR_L_CreateFeature(out_layer, feature);
