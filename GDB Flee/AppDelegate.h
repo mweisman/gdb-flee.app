@@ -10,7 +10,7 @@
 #import "ProgressPanel.h"
 #import "Interfaces.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, OGRProgress>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate, OGRProgress>
 
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSTextField *inputFile;

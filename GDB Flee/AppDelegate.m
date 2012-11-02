@@ -114,6 +114,14 @@
     [_progressPanel.progessBar setDoubleValue:0.0];
     [_ogrAgent convertFileAtLocation:gdbPath toFormat:ogrFormat toLocation:saveLoc reply:^(OGRResponse *ogrr){
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            NSUserNotification *notification = [[NSUserNotification alloc] init];
+            [notification setTitle:@"Conversion Complete"];
+            [notification setInformativeText:[NSString stringWithFormat:@"%@ has been converted to %@", _inputFile.stringValue, ogrFormat]];
+            [notification setDeliveryDate:[NSDate date]];
+            [notification setSoundName:NSUserNotificationDefaultSoundName];
+            NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
+            [center setDelegate:self];
+            [center scheduleNotification:notification];
             [NSApp endSheet:_progressPanel];
             [_progressPanel orderOut:self];
         }];
@@ -147,6 +155,12 @@
 }
 - (void)setLayerName:(NSString *)name {
     [_progressPanel.statusLabel setStringValue:[NSString stringWithFormat:@"Processing Layer %@", name]];
+}
+
+#pragma mark notification center handler
+-(void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
+    //Remove the notification
+    [center removeDeliveredNotification:notification];
 }
 
 @end
