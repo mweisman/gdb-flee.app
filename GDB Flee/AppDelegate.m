@@ -10,33 +10,11 @@
 #import "InputSettingsViewController.h"
 
 @implementation AppDelegate {
-    id <OGR> _ogrAgent;
     NSString *gdbPath;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    _connection = [[NSXPCConnection alloc] initWithServiceName:@"com.mweisman.OGRService"];
-    _connection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(OGR)];
-    _connection.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(OGRProgress)];
-    _connection.exportedObject = self;
-    [_connection resume];
-    
-    // Get a proxy object from the connection. This object implements the Agent protocol and calls the supplied error handling block if something goes wrong when a message with a reply is sent.
-    _ogrAgent = [_connection remoteObjectProxyWithErrorHandler:^(NSError *err) {
-        // Since we're updating the UI, we must do this work on the main thread
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            NSAlert *alert = [[NSAlert alloc] init];
-            [alert addButtonWithTitle: @"OK"];
-            [alert setMessageText: @"An Unkown error occurred. Please try again."];
-            [alert setAlertStyle: NSWarningAlertStyle];
-            
-            [alert runModal];
-            
-            [NSApp endSheet:_progressPanel];
-            [_progressPanel orderOut:self];
-        }];
-    }];
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
@@ -46,7 +24,30 @@
 
 - (void)processFile:(NSString *)file {
     NSURL *filePath = [NSURL URLWithString:file];
-    [_ogrAgent driverForFileAtLocation:[filePath path] reply:^(OGRResponse *ogrr){
+    
+    NSXPCConnection *fileCheckConnection = [[NSXPCConnection alloc] initWithServiceName:@"com.mweisman.OGRService"];
+    fileCheckConnection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(OGR)];
+    fileCheckConnection.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(OGRProgress)];
+    fileCheckConnection.exportedObject = self;
+    [fileCheckConnection resume];
+    
+    id <OGR> ogrCheckAgent = [fileCheckConnection remoteObjectProxyWithErrorHandler:^(NSError *err) {
+        // Since we're updating the UI, we must do this work on the main thread
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle: @"OK"];
+            [alert setMessageText: @"An Unkown error occurred while scanning this file. Please try again."];
+            [alert setAlertStyle: NSWarningAlertStyle];
+            
+            [alert runModal];
+            
+            [NSApp endSheet:_progressPanel];
+            [_progressPanel orderOut:self];
+            [fileCheckConnection invalidate];
+        }];
+    }];
+    
+    [ogrCheckAgent driverForFileAtLocation:[filePath path] reply:^(OGRResponse *ogrr){
         if ([ogrr.response isEqualToString:@"FileGDB"]) {
             _inputFile.stringValue = [[filePath pathComponents] lastObject];
             gdbPath = file;
@@ -60,6 +61,7 @@
                 [badFileAlert runModal];
             }];
         }
+        [fileCheckConnection invalidate];
     }];
 }
 
@@ -112,7 +114,30 @@
     [_progressPanel.statusLabel setStringValue:[NSString stringWithFormat:@"Converting %@ to %@",_inputFile.stringValue, ogrFormat]];
     [_progressPanel.progessBar setIndeterminate:NO];
     [_progressPanel.progessBar setDoubleValue:0.0];
-    [_ogrAgent convertFileAtLocation:gdbPath toFormat:ogrFormat toLocation:saveLoc reply:^(OGRResponse *ogrr){
+    
+    NSXPCConnection *convertConnection = [[NSXPCConnection alloc] initWithServiceName:@"com.mweisman.OGRService"];
+    convertConnection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(OGR)];
+    convertConnection.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(OGRProgress)];
+    convertConnection.exportedObject = self;
+    [convertConnection resume];
+    
+    id <OGR> ogrConversionAgent = [convertConnection remoteObjectProxyWithErrorHandler:^(NSError *err) {
+        // Since we're updating the UI, we must do this work on the main thread
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle: @"OK"];
+            [alert setMessageText: @"An Unkown error occurred while scanning this file. Please try again."];
+            [alert setAlertStyle: NSWarningAlertStyle];
+            
+            [alert runModal];
+            
+            [NSApp endSheet:_progressPanel];
+            [_progressPanel orderOut:self];
+            [convertConnection invalidate];
+        }];
+    }];
+    
+    [ogrConversionAgent convertFileAtLocation:gdbPath toFormat:ogrFormat toLocation:saveLoc reply:^(OGRResponse *ogrr){
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             NSUserNotification *notification = [[NSUserNotification alloc] init];
             [notification setTitle:@"Conversion Complete"];
@@ -125,6 +150,7 @@
             [NSApp endSheet:_progressPanel];
             [_progressPanel orderOut:self];
         }];
+        [convertConnection invalidate];
     }];
 }
 
