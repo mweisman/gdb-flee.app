@@ -90,28 +90,30 @@
         [savePanel setNameFieldStringValue:[NSString stringWithFormat:@"%@.sql", _inputFile.stringValue]];
     }
     
-    NSInteger savePanelReturn;
-    NSString *saveLoc = nil;
     if ([ogrFormat isEqualToString:@"ESRI Shapefile"]) {
-        savePanelReturn = [shpSavePanel runModal];
-        if (savePanelReturn == NSOKButton) {
-            saveLoc = [[shpSavePanel directoryURL] path];
-        } else {
-            return;
-        }
+        [shpSavePanel beginSheetModalForWindow:_window completionHandler:^(NSInteger result){
+            if (result == NSOKButton) {
+                [self convertInputToFormat:ogrFormat atLocation:[[shpSavePanel directoryURL] path]];
+            } else {
+                return;
+            }
+        }];
+        
     } else {
-        savePanelReturn = [savePanel runModal];
-        if (savePanelReturn == NSFileHandlingPanelOKButton) {
-            saveLoc = [[savePanel URL] path];
-        } else {
-            return;
-        }
+        [savePanel beginSheetModalForWindow:_window completionHandler:^(NSInteger result){
+            if (result == NSFileHandlingPanelOKButton) {
+                [self convertInputToFormat:ogrFormat atLocation:[[savePanel URL] path]];
+            } else {
+                return;
+            }
+        }];
     }
-    
+}
+- (void)convertInputToFormat:(NSString *)format atLocation:(NSString *)outLocation {
     [NSApp beginSheet:_progressPanel modalForWindow:_window modalDelegate:self didEndSelector:nil contextInfo:nil];
     [[NSApplication sharedApplication] beginSheet:_progressPanel modalForWindow:_window modalDelegate:self didEndSelector:nil contextInfo:nil];
     [_progressPanel.progessBar startAnimation:nil];
-    [_progressPanel.statusLabel setStringValue:[NSString stringWithFormat:@"Converting %@ to %@",_inputFile.stringValue, ogrFormat]];
+    [_progressPanel.statusLabel setStringValue:[NSString stringWithFormat:@"Converting %@ to %@",_inputFile.stringValue, format]];
     [_progressPanel.progessBar setIndeterminate:NO];
     [_progressPanel.progessBar setDoubleValue:0.0];
     
@@ -126,7 +128,7 @@
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             NSAlert *alert = [[NSAlert alloc] init];
             [alert addButtonWithTitle: @"OK"];
-            [alert setMessageText: @"An Unkown error occurred while scanning this file. Please try again."];
+            [alert setMessageText: @"An Unkown error occurred while converting. Please try again."];
             [alert setAlertStyle: NSWarningAlertStyle];
             
             [alert runModal];
@@ -137,11 +139,11 @@
         }];
     }];
     
-    [ogrConversionAgent convertFileAtLocation:gdbPath toFormat:ogrFormat toLocation:saveLoc reply:^(OGRResponse *ogrr){
+    [ogrConversionAgent convertFileAtLocation:gdbPath toFormat:format toLocation:outLocation reply:^(OGRResponse *ogrr){
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             NSUserNotification *notification = [[NSUserNotification alloc] init];
             [notification setTitle:@"Conversion Complete"];
-            [notification setInformativeText:[NSString stringWithFormat:@"%@ has been converted to %@", _inputFile.stringValue, ogrFormat]];
+            [notification setInformativeText:[NSString stringWithFormat:@"%@ has been converted to %@", _inputFile.stringValue, format]];
             [notification setDeliveryDate:[NSDate date]];
             [notification setSoundName:NSUserNotificationDefaultSoundName];
             NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
@@ -160,10 +162,11 @@
     [gdbOpenPanel setCanChooseDirectories:YES];
     [gdbOpenPanel setAllowsMultipleSelection:NO];
     [gdbOpenPanel setPrompt:@"Open"];
-    NSInteger panelReturn = [gdbOpenPanel runModal];
-    if (panelReturn == NSOKButton) {
-        [self processFile:[[gdbOpenPanel URL] path]];
-    }
+    [gdbOpenPanel beginSheetModalForWindow:_window completionHandler:^(NSInteger result){
+        if (result == NSOKButton) {
+            [self processFile:[[gdbOpenPanel URL] path]];
+        }
+    }];
 }
 
 - (IBAction)showOptions:(id)sender {
