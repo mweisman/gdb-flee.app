@@ -811,6 +811,7 @@
 							<string key="NSFrame">{{292, 28}, {90, 32}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="398411002">
@@ -1145,6 +1146,7 @@
 						<string key="NSFrame">{{237, 27}, {48, 48}}</string>
 						<reference key="NSSuperview" ref="917320257"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="843470877">
@@ -1191,6 +1193,7 @@
 							<string key="NSFrame">{{20, 19}, {361, 20}}</string>
 							<reference key="NSSuperview" ref="26595324"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSHuggingPriority">{250, 250}</string>
 							<int key="NSpiFlags">16399</int>
@@ -1199,7 +1202,7 @@
 						<object class="NSTextField" id="361155150">
 							<reference key="NSNextResponder" ref="26595324"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{17, 46}, {38, 17}}</string>
+							<string key="NSFrame">{{17, 46}, {6, 17}}</string>
 							<reference key="NSSuperview" ref="26595324"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="628444208"/>
@@ -1208,7 +1211,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="315151610">
 								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Label</string>
+								<string key="NSContents"/>
 								<reference key="NSSupport" ref="422408717"/>
 								<string key="NSCellIdentifier">_NS:1535</string>
 								<reference key="NSControlView" ref="361155150"/>
@@ -3541,7 +3544,6 @@
 						<string key="goButton">NSButton</string>
 						<string key="inputFile">NSTextField</string>
 						<string key="inputInfoButton">NSButton</string>
-						<string key="mainView">NSView</string>
 						<string key="optionsButton">NSButton</string>
 						<string key="popover">NSPopover</string>
 						<string key="progressPanel">ProgressPanel</string>
@@ -3563,10 +3565,6 @@
 						<object class="IBToOneOutletInfo" key="inputInfoButton">
 							<string key="name">inputInfoButton</string>
 							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="mainView">
-							<string key="name">mainView</string>
-							<string key="candidateClassName">NSView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="optionsButton">
 							<string key="name">optionsButton</string>
