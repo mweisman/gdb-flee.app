@@ -15,6 +15,26 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    [_window registerForDraggedTypes:@[NSFilenamesPboardType]];
+}
+
+#pragma mark drag operation delegate
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
+    return NSDragOperationCopy;
+}
+
+- (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender {
+    return YES;
+}
+
+- (BOOL)performDragOperation:(id <NSDraggingInfo>)sender {
+    NSArray *draggedFilenames = [[sender draggingPasteboard] propertyListForType:NSFilenamesPboardType];
+    if ([[[draggedFilenames objectAtIndex:0] pathExtension] isEqual:@"gdb"]) {
+        [self processFile:[draggedFilenames objectAtIndex:0]];
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
